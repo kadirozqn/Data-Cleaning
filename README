@@ -1,0 +1,56 @@
+# Veri Temizleme Senaryosu 2: Aykırı Değerler ve Tutarsız Metin Verisi
+
+Bu projede, bir şirketin çalışan performans değerlendirme verileri üzerinde veri temizleme işlemleri gerçekleştirilmiştir. Özellikle aykırı değerler ve kategorik verilerdeki tutarsızlıkların tespiti ve düzeltilmesi üzerinde durulmuştur.
+
+## Kullanılan Kütüphaneler
+- Python 3.x
+- Pandas
+- NumPy
+
+## Senaryo
+Elimizdeki veri setinde:
+- **Aykırı Yaş Değerleri** (örneğin: 120 gibi gerçek dışı yaşlar),
+- **Aykırı Performans Puanları** (örneğin: 5 gibi düşük uç değerler),
+- **Tutarsız Departman Adları** (örneğin: 'IK', 'ik', 'BT', 'IT', 'satış')
+
+gibi sorunlar bulunmaktadır. Bu proje, bu sorunları nasıl tespit edip düzelteceğimizi göstermektedir.
+
+---
+
+## Temizleme Aşamaları
+
+### 1. Aykırı Değerlerin Tespiti ve Düzenlenmesi
+
+#### ✅ Yaş Kolonu:
+- Yaşı 100’ün üzerinde olan kayıtlar **aykırı değer** olarak kabul edilmiştir.
+- Aykırı yaş, veri setindeki 100 yaş ve altındaki kişilerin **ortalama yaşı** ile değiştirilmiştir.
+
+#### ✅ PerformansPuanı Kolonu:
+- Performans puanı 10’un altında olan kayıtlar **aykırı** olarak işaretlenmiştir.
+- Bu tür değerler, diğer normal değerlerin **ortalaması** ile değiştirilmiştir.
+
+---
+
+### 2. Tutarsız Metin Verisinin Standardizasyonu
+
+#### ✅ Departman Kolonu:
+- Tüm departman isimleri büyük harfe çevrilmiştir.
+- Benzer anlamdaki terimler (örn. `BT` → `IT`, `SATIŞ` → `PAZARLAMA`) birleştirilmiştir.
+
+---
+
+## Veri Seti Özeti (Örnek)
+| ÇalışanID | Adı   | Yaş   | Departman | PerformansPuanı | DeneyimYılı |
+|-----------|-------|-------|-----------|------------------|--------------|
+| 1         | Ayşe  | 28.0  | IK        | 85               | 3            |
+| 6         | Fatma | 29.0  | PAZARLAMA | 80               | 3            |
+| 10        | Jale  | 35.1  | IT        | 91               | 6            |
+
+---
+
+## Çalıştırmak İçin
+
+1. Repoyu klonlayın:
+   ```bash
+   git clone https://github.com/kullaniciadi/aykiri-veri-temizleme.git
+   cd aykiri-veri-temizleme
